@@ -1,29 +1,85 @@
-Firs load code in google colab.
+## 🗒️ README
 
-(If you are unfamiliar with using Colab, you can use the following guide:
-https://www.aparat.com/v/u751kb9)
+### Introduction
 
-code link in google drive:
-https://drive.google.com/file/d/1Otz9wfk-c8uSJGY6XKGL_UL0eRInH9Db/view?usp=drive_link
+This project involves using Google Colab for data augmentation and training a Convolutional Neural Network (CNN) for binary classification tasks. The dataset used is composed of COVID-19 X-ray images.
 
-Dataset link in google drive:
-https://drive.google.com/drive/folders/1rlP31T042SLtQNhlomgoHJrpDu8cXCsY?usp=drive_link
+### Prerequisites
 
-After loading the data into the Colab environment, we proceed with data augmentation. For this purpose, we define the data_augment function. This function initially takes the directory of the original data and the output directory for storing the augmented data. First, it checks if the output directory exists; if not, it creates it. Then, it stores all image data with extensions “.jpg”, “.jpeg”, and “.png” and performs the augmentation operations in sequence, saving each new file with an appropriate name after each operation.
+- A Google account
+- Basic knowledge of Google Colab
+- Familiarity with Python and TensorFlow
 
-For the flip operation, a random number generator is used to decide the type of flip before applying it. The rotations are performed sequentially by 90, 180, and 270 degrees, with each result saved.
-Data augmentation is an approach that can significantly increase the number of data samples in a dataset for training a model. For image datasets, this approach uses processing operations such as reflection, rotation, cropping, or filling to augment the data. In this study, two image processing operations, namely flipping and rotating, were used for data augmentation. The following approach was considered:
-	1: In the first stage of augmentation, 90 X-ray images were flipped to obtain 90 new images.
-	2: In the second stage, the original 90 images were rotated by 90 degrees to obtain 90 additional images.
-	3: In the third stage, the original images were rotated by 180 degrees to obtain another 90 images.
-	4: Finally, the original 90 images were rotated by 270 degrees to obtain 90 more images.
-These operations resulted in the creation of a dataset consisting of 450 COVID-19 X-ray images. Subsequently, to augment the data, we proceed to increase the given data.
-We then rescale the training and test data. For the validation data, we create a subset of the training data with a size of 0.25 of the training data, which is also rescaled. We then take a batch of augmented training data and print the first four data samples in that batch. (Each batch has a structure of (32, 150, 150, 3), meaning there are 32 data samples in each batch.) Another batch of this data is taken, and four more images are printed.
+### Getting Started
 
-A Convolutional Neural Network (CNN) architecture is used for binary classification tasks. The CNN model consists of 38 layers, including convolutional layers (Conv2D), max pooling, dropout, activation functions, batch normalization, flatten, and fully connected layers. The input image dimensions are set to (150, 150, 3) for RGB images. Convolutional layers use a 3×3 kernel. After each Conv2D layer, various techniques are applied, including max pooling (with a 2×2 size), batch normalization (along axis 1), ReLU activation function, and a dropout layer (with a 20% rate). The final output, obtained from 256 neurons in the last Conv2D layer, passes through max pooling, batch normalization, activation, and dropout layers.
+#### Google Colab Setup
 
-For binary classification, the model uses the binary cross-entropy (BCE) loss function and the sigmoid activation function, as only one output node is needed to classify data into one of the two existing classes. The Adam optimizer is used to dynamically adjust the weight features and learning rate to minimize model loss.
+If you are unfamiliar with using Colab, you can use the following guide:
+[Colab Guide](https://www.aparat.com/v/u751kb9)
 
-Based on the described architecture and utilizing the TensorFlow library, we proceed to implement the proposed model. We then train the model using the validation data generated in previous steps. The number of epochs is set to 50, similar to the article. The learning rate is set to 0.006, determined experimentally through testing.
+#### Loading Code and Dataset
 
-After training the model, we plot the loss and accuracy graphs for the training and validation data. Next, we evaluate the implemented network. To further evaluate this network structure, we define models with 1, 2, 3, 4, and 5 convolutional layers. These models are trained with augmented data similar to the original model with 6 convolutional layers and then evaluated using test and validation data.
+- **Code Link**: [Google Drive - Code](https://drive.google.com/file/d/1Otz9wfk-c8uSJGY6XKGL_UL0eRInH9Db/view?usp=drive_link)
+- **Dataset Link**: [Google Drive - Dataset](https://drive.google.com/drive/folders/1rlP31T042SLtQNhlomgoHJrpDu8cXCsY?usp=drive_link)
+
+### Data Augmentation
+
+#### Function: `data_augment`
+
+This function takes the directory of the original data and the output directory for storing the augmented data. It performs the following operations:
+
+1. **Flipping**: Images are flipped using a random number generator.
+2. **Rotations**: Images are rotated by 90, 180, and 270 degrees.
+
+#### Steps:
+
+1. **First Stage**: Flip 90 X-ray images to obtain 90 new images.
+2. **Second Stage**: Rotate the original 90 images by 90 degrees to obtain 90 additional images.
+3. **Third Stage**: Rotate the original images by 180 degrees to obtain another 90 images.
+4. **Fourth Stage**: Rotate the original 90 images by 270 degrees to obtain 90 more images.
+
+This results in a dataset consisting of 450 COVID-19 X-ray images.
+
+### Data Preparation
+
+1. **Rescaling**: Rescale the training and test data.
+2. **Validation Data**: Create a subset of the training data (25%) and rescale.
+
+### Model Architecture
+
+A CNN architecture is used, consisting of 38 layers, including:
+
+- **Convolutional Layers (Conv2D)** with a 3×3 kernel
+- **Max Pooling** (2×2 size)
+- **Dropout** (20% rate)
+- **Batch Normalization** (along axis 1)
+- **ReLU Activation Function**
+- **Fully Connected Layers**
+
+#### Output
+
+- **Binary Classification**: Uses binary cross-entropy (BCE) loss function and sigmoid activation function.
+- **Optimizer**: Adam optimizer with a learning rate of 0.006.
+
+### Training
+
+- **Epochs**: 50
+- **Validation**: Use validation data generated in previous steps.
+
+### Evaluation
+
+1. **Loss and Accuracy Graphs**: Plot graphs for training and validation data.
+2. **Model Comparison**: Evaluate models with 1, 2, 3, 4, and 5 convolutional layers using augmented data.
+
+### Conclusion
+
+The implemented network is trained and evaluated for binary classification tasks using augmented data. The performance is compared across different architectures.
+
+### References
+
+- [Google Colab - Notebook Loading Error](https://stackoverflow.com/questions/59751151/google-colab-errors-notebook-loading-error)
+- [Google Drive - View & Open Files](https://support.google.com/drive/answer/2423485?hl=en)
+- [AWS - What is Data Augmentation?](https://aws.amazon.com/what-is/data-augmentation/)
+- [GitHub - Illegal Code on Colab](https://github.com/TheLastBen/fast-stable-diffusion/issues/2013)
+- [Google Drive - Download](https://www.google.com/drive/download/)
+- [DataScientest - Data Augmentation](https://datascientest.com/en/data-augmentation-what-is-it-whats-it-for)
