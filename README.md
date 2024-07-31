@@ -75,6 +75,10 @@ A CNN architecture is used, consisting of 38 layers, including:
 
 The implemented network is trained and evaluated for binary classification tasks using augmented data. The performance is compared across different architectures.
 
+### Written by:
+  Neda Sefandarmaz
+  n.sefandarmaz@gmail.com
+
 ### References
 
 - [Google Colab - Notebook Loading Error](https://stackoverflow.com/questions/59751151/google-colab-errors-notebook-loading-error)
