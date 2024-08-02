@@ -78,6 +78,7 @@ The implemented network is trained and evaluated for binary classification tasks
 ### Written by:
   Neda Sefandarmaz
   n.sefandarmaz@gmail.com
+  @Nedseeee
 
 ### References
 
