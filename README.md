@@ -19,10 +19,9 @@ If you are unfamiliar with using Colab, you can use the following guide:
 
 #### Loading Code and Dataset
 
-- **Code Link**: [Google Drive - Code](https://drive.google.com/file/d/1Otz9wfk-c8uSJGY6XKGL_UL0eRInH9Db/view?usp=drive_link)
+- **Code Link**: [https://drive.google.com/file/d/1txtIL0QpKRPoHn4Fjun5Jw6Vmmkdab95/view?usp=drive_link)
 - **Dataset Link**: [Google Drive - Dataset](https://drive.google.com/drive/folders/1rlP31T042SLtQNhlomgoHJrpDu8cXCsY?usp=drive_link)
-- نداسفندارمذ
-https://drive.google.com/drive/mobile/folders/1rtfq3zcwlIEamjakQAHJ3Wbvfui3rvlq?usp=drive_link
+- **NedaSefandarmaz Google Drive**: [https://drive.google.com/drive/mobile/folders/1rtfq3zcwlIEamjakQAHJ3Wbvfui3rvlq?usp=drive_link)
 
 ### Data Augmentation
 
